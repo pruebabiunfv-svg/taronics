@@ -6,8 +6,17 @@ from config import config
 def create_app(config_name='default'):
     app = Flask(__name__, template_folder='templates', static_folder='static')
     app.config.from_object(config[config_name])
-    if config_name == 'production' and not os.getenv('SECRET_KEY'):
-        raise RuntimeError('Producción requiere SECRET_KEY generado aleatoriamente.')
+    if config_name == 'production' and app.config.get('SECRET_KEY') in (
+        None,
+        '',
+        'REEMPLAZAR_POR_64_CARACTERES_GENERADOS',
+        'dev-only-not-for-deployment-change-me',
+    ):
+        raise RuntimeError(
+            'Falta una SECRET_KEY segura. En Railway > Servicio > Variables, '
+            'cree SECRET_KEY con un valor aleatorio (python -c '
+            '"import secrets; print(secrets.token_hex(32))") y despliegue los cambios.'
+        )
     if config_name == 'production' and app.config['ALLOW_PUBLIC_REGISTRATION'] and not app.config['REGISTRATION_CODE']:
         raise RuntimeError('El registro de producción requiere REGISTRATION_CODE, o deshabilitarlo.')
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)

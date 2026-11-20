@@ -3,6 +3,7 @@ __pycache__/
 .venv/
 .env
 instance/
+migration/
 .pytest_cache/
 .coverage
 *.log

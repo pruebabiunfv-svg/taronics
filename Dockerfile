@@ -7,4 +7,7 @@ COPY --chown=tatronics:tatronics . .
 RUN mkdir -p /app/instance && chown -R tatronics:tatronics /app/instance
 USER tatronics
 EXPOSE 8000
-CMD ["gunicorn", "--workers", "2", "--threads", "4", "--timeout", "120", "--bind", "0.0.0.0:8000", "run:app"]
+# Railway inyecta PORT en ejecución. El shell expande su valor y exec conserva
+# las señales para que Gunicorn cierre limpiamente en los despliegues.
+# Un worker reduce la competencia durante la migración inicial de SQLite.
+CMD ["sh", "-c", "exec gunicorn --workers 1 --threads 4 --timeout 120 --bind 0.0.0.0:${PORT:-8000} run:app"]

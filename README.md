@@ -2,6 +2,9 @@
 
 # TATRONICS PERÚ · CalibPro Enterprise UI
 
+**Despliegue en Railway:** consulte [GUIA_RAILWAY.md](GUIA_RAILWAY.md) para configurar
+`SECRET_KEY`, el puerto dinámico, el almacenamiento persistente y el dominio.
+
 Actualización del proyecto Flask que **unifica la portada corporativa, el inicio de sesión, el registro y el panel de calibraciones**. Mantiene los módulos y endpoints de negocio del CalibPro original, pero reordena los archivos para mantenimiento. La apariencia es nueva; esto **no implica certificación de seguridad ni acreditación metrológica**.
 
 ## 1. Vistas principales
