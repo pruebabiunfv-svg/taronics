@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tatronics · CalibPro | Plataforma empresarial</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#071e32">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="description" content="CalibPro — Plataforma de gestión técnica y metrológica de Tatronics Perú">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/platform/legacy.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/platform/platform.css') }}">
+</head>
+<body data-panel="{{ panel }}" data-user-role="{{ user.user_rol }}" data-user-id="{{ user.user_id }}">
+
+{% include 'platform/partials/sidebar.html' %}
+
+<!-- MAIN -->
+<div class="main-content">
+  {% include 'platform/partials/topbar.html' %}
+
+  <main class="content-area" id="content-area">
+
+    {% if user.user_rol in ('admin', 'jefe') %}{% include 'platform/panels/dashboard.html' %}{% else %}{% include 'platform/panels/mi-inicio.html' %}{% endif %}
+    {% include 'platform/panels/nuevo-diagnostico.html' %}
+    {% include 'platform/panels/historial.html' %}
+    {% include 'platform/panels/equipos.html' %}
+    {% if user.user_rol in ('admin', 'jefe') %}{% include 'platform/panels/patrones.html' %}{% endif %}
+    {% if user.user_rol in ('admin', 'jefe') %}{% include 'platform/panels/clientes.html' %}{% endif %}
+    {% if user.user_rol == 'admin' %}{% include 'platform/panels/personal.html' %}{% endif %}
+    {% include 'platform/panels/certificados.html' %}
+    {% if user.user_rol in ('admin', 'jefe') %}{% include 'platform/panels/estadisticas.html' %}{% endif %}
+    {% include 'platform/panels/alertas.html' %}
+    {% if user.user_rol in ('admin', 'jefe') %}{% include 'platform/panels/auditoria.html' %}{% endif %}
+  </main><!-- /content-area -->
+</div><!-- /main-content -->
+
+{% include 'platform/partials/modals.html' %}
+
+<!-- TOAST -->
+<div id="toast"><span id="toast-icon">✅</span><span id="toast-msg"></span></div>
+
+<!-- PHOTO INPUTS (hidden) -->
+<div id="required-photo-inputs"></div>
+
+<script src="/static/js/platform/api.js"></script>
+<script src="/static/js/platform/ui.js"></script>
+<script src="/static/js/platform/wizard.js"></script>
+<script src="/static/js/platform/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!-- ═══ DASHBOARD ═══ -->
+<div id="panel-dashboard" class="panel active">
+  <section class="overview-hero" aria-label="Inicio del espacio de trabajo">
+    <div class="overview-content"><div class="overview-kicker"><span></span> CENTRO DE OPERACIONES / CALIBPRO</div>
+      <h1>La precisión de cada día, <em>en un solo lugar.</em></h1>
+      <p>Bienvenido, <strong>{{ user.user_nombre }}</strong>. Controla tus equipos, revisa diagnósticos y mantén tus procesos técnicos organizados.</p>
+      <div class="overview-actions"><button type="button" class="overview-primary" onclick="showPanel('nuevo-diagnostico')">+ Iniciar diagnóstico <span aria-hidden="true">↗</span></button><button type="button" class="overview-secondary" onclick="showPanel('equipos')">Ver inventario <span aria-hidden="true">→</span></button></div>
+    </div>
+    <div class="overview-decoration" aria-hidden="true"><div class="overview-orbit"></div><div class="overview-cross">+</div><div class="overview-circle">◎</div><div class="overview-deco-caption">CONTROL · TRAZABILIDAD · PRECISIÓN</div></div>
+  </section>
+  <div class="section-meta"><div><span class="meta-line"></span><span>INDICADORES DEL SISTEMA</span><h2>Estado general</h2></div><span class="meta-info">Resumen de actividad</span></div>
+  <div class="stats-grid" id="dash-stats">
+    <div class="stat-card"><div class="stat-icon">🔬</div><div class="stat-val" id="s-diag">—</div><div class="stat-lbl">Diagnósticos este mes</div></div>
+    <div class="stat-card blue"><div class="stat-icon">✅</div><div class="stat-val" id="s-conf">—</div><div class="stat-lbl">Equipos conformes</div></div>
+    <div class="stat-card orange"><div class="stat-icon">⚠️</div><div class="stat-val" id="s-nc">—</div><div class="stat-lbl">No conformes</div></div>
+    <div class="stat-card warn"><div class="stat-icon">🔔</div><div class="stat-val" id="s-alert">—</div><div class="stat-lbl">Alertas activas</div></div>
+  </div>
+  <div class="section-meta section-meta-spaced"><div><span class="meta-line"></span><span>SEGUIMIENTO</span><h2>Lo importante, a la vista</h2></div></div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-header"><div class="card-title">⏳ Próximos vencimientos</div></div>
+      <div class="table-wrap"><table id="tbl-venc"><thead><tr><th>Equipo</th><th>Magnitud</th><th>Próxima Calib.</th></tr></thead><tbody></tbody></table></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-title">📋 Actividad reciente</div></div>
+      <div id="dash-recientes" class="timeline"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">📊 Diagnósticos por magnitud física</div></div>
+    <div id="dash-magnitudes" class="mag-grid"></div>
+  </div>
+</div>
+

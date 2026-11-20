@@ -1,0 +1,17 @@
+<!-- ═══ HISTORIAL ═══ -->
+<div id="panel-historial" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">📋 {{ 'Historial de diagnósticos' if user.user_rol in ('admin','jefe') else 'Mis diagnósticos' }}</div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="hist-q" placeholder="Buscar..." style="width:200px;" oninput="loadHistorial()">
+        <select id="hist-mag" onchange="loadHistorial()"><option value="">Todas las magnitudes</option>
+          <option>Presión</option><option>Temperatura</option><option>Peso</option><option>Eléctrica</option><option>pH</option><option>Caudal</option></select>
+      </div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>N° Certificado</th><th>Equipo</th><th>Magnitud</th><th>Técnico</th><th>Cliente</th><th>Fecha</th><th>Resultado</th><th>Acciones</th></tr></thead>
+      <tbody id="tbl-historial"></tbody></table></div>
+    <div id="hist-pagination" style="padding:12px 0;text-align:center;font-size:13px;color:var(--text2);"></div>
+  </div>
+</div>
+

@@ -1,0 +1,25 @@
+{% extends 'auth/base.html' %}
+{% block title %}Registro de usuario{% endblock %}
+{% block navlink %}<a class="portal-nav-action" href="{{ url_for('auth.login') }}">Iniciar sesión <span aria-hidden="true">↗</span></a>{% endblock %}
+{% block form_label %}Registro de usuario{% endblock %}
+{% block card %}
+<div class="auth-eyebrow"><span class="eyebrow-line"></span> GESTIÓN DE USUARIOS</div>
+<h2>Tu espacio de <span>trabajo empieza aquí.</span></h2>
+<p class="auth-subtitle">Crea tu perfil técnico para acceder a las herramientas de gestión de calibraciones.</p>
+{% if error %}<div class="form-message error" role="alert">{{ error }}</div>{% endif %}
+{% if registration_enabled %}
+<form method="POST" action="{{ url_for('registro.registro') }}" class="auth-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field"><label for="usuario">Nombre completo <span>*</span></label><div class="input-wrap"><span class="input-icon" aria-hidden="true">♙</span><input id="usuario" name="usuario" autocomplete="name" placeholder="Nombre y apellidos" required minlength="3" maxlength="120" value="{{ request.form.get('usuario','') }}"></div></div>
+  <div class="field"><label for="email">Correo corporativo <span>*</span></label><div class="input-wrap"><span class="input-icon" aria-hidden="true">@</span><input id="email" type="email" name="email" autocomplete="email" maxlength="254" placeholder="nombre@empresa.com" required value="{{ request.form.get('email','') }}"></div></div>
+  <div class="field"><label for="password">Contraseña <span>*</span></label><div class="input-wrap"><span class="input-icon" aria-hidden="true">⌑</span><input id="password" type="password" name="password" autocomplete="new-password" minlength="12" placeholder="Mínimo 12 caracteres" required><button type="button" class="eye-btn" data-password-toggle="password" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button></div><small class="field-hint">Utiliza una clave exclusiva de al menos 12 caracteres.</small></div>
+  <div class="field"><label for="password_confirm">Confirmar contraseña <span>*</span></label><div class="input-wrap"><span class="input-icon" aria-hidden="true">⌑</span><input id="password_confirm" type="password" name="password_confirm" minlength="12" autocomplete="new-password" placeholder="Repite tu contraseña" required><button type="button" class="eye-btn" data-password-toggle="password_confirm" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button></div></div>
+  <div class="field"><label>Perfil asignado</label><div class="readonly-role">Técnico · Acceso operativo <span aria-hidden="true">✓</span></div><small class="field-hint">El administrador gestiona los permisos. No se utilizan sedes ni laboratorios independientes.</small></div>
+  {% if config.REGISTRATION_CODE %}<div class="field"><label for="codigo">Código de invitación <span>*</span></label><div class="input-wrap"><span class="input-icon" aria-hidden="true">◇</span><input type="text" id="codigo" name="codigo" placeholder="Código entregado por tu empresa" required autocomplete="off"></div></div>{% endif %}
+  <button class="primary-action" type="submit">Crear mi cuenta <span aria-hidden="true">↗</span></button>
+</form>
+{% else %}
+<div class="registration-closed"><span class="closed-icon">◎</span><h3>Registro mediante autorización</h3><p>Por seguridad, las cuentas nuevas se gestionan por tu administrador. Solicita una invitación para activar tu usuario.</p><a href="{{ url_for('home.inicio') }}#contacto">Contactar a Tatronics ↗</a></div>
+{% endif %}
+<p class="auth-footer">¿Ya tienes una cuenta? <a href="{{ url_for('auth.login') }}">Iniciar sesión</a></p>
+{% endblock %}

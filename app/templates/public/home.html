@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b33">
+  <meta name="description" content="Tatronics Perú: soluciones para calibración, mantenimiento, automatización e ingeniería de equipos de laboratorio e industria. Solicita una cotización por WhatsApp.">
+  <title>Tatronics Perú | Ingeniería, calibración y mantenimiento industrial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/public/landing.css') }}">
+  <script src="{{ url_for('static', filename='js/public/landing.js') }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="site-header" id="top">
+    <nav class="nav-shell container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Tatronics Perú, ir al inicio">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 26.5V13.5L20 6.5L32 13.5V26.5L20 33.5L8 26.5Z" stroke="currentColor" stroke-width="2.6"/><path d="M13 16.5H27M20 16.5V28M15 22H25" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+        <span class="brand-copy"><strong>TATRONICS<span>.</span></strong><small>INGENIERÍA &amp; METROLOGÍA</small></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="main-menu">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#proceso" class="nav-link">Cómo trabajamos</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+        <a class="nav-login" href="{{ url_for('auth.login') }}">Acceso clientes <span aria-hidden="true">↗</span></a>
+        <a class="button button-primary nav-cta" href="#cotizacion">Solicitar cotización <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow-dark"><span class="live-dot"></span> SOLUCIONES TÉCNICAS PARA SU INDUSTRIA</div>
+          <h1 id="hero-title">La precisión impulsa <span>grandes resultados.</span></h1>
+          <p class="hero-description">Calibración, mantenimiento, automatización e ingeniería para equipos de laboratorio e industria. Acompañamos cada proyecto con criterio técnico y atención personalizada.</p>
+          <div class="hero-actions">
+            <a class="button button-primary button-large" href="#cotizacion">Solicitar una cotización <span aria-hidden="true">↗</span></a>
+            <a class="button button-ghost button-large" href="#servicios">Explorar servicios <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-assurance" aria-label="Aspectos de nuestro servicio">
+            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Atención personalizada</span>
+            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Enfoque técnico</span>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Ilustración de un panel de monitoreo industrial con valores de medición y trazabilidad">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="visual-topline"><span class="signal-dot"></span> CONTROL DE PROCESOS <span class="topline-line"></span> 01 / 04</div>
+          <div class="instrument-card">
+            <div class="instrument-header"><div><small>INSPECCIÓN TÉCNICA</small><h2>Panel de medición</h2></div><span class="instrument-status">● MONITOREO</span></div>
+            <div class="instrument-screen">
+              <div class="screen-top"><span>Señal de referencia</span><span>CH — 01</span></div>
+              <svg class="waveform" viewBox="0 0 500 145" preserveAspectRatio="none" aria-hidden="true"><defs><pattern id="grid" width="40" height="30" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 30" fill="none" stroke="#2f5263" stroke-width="1" opacity=".54"/></pattern><linearGradient id="wavefill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#35e0c5" stop-opacity=".32"/><stop offset="100%" stop-color="#35e0c5" stop-opacity="0"/></linearGradient></defs><rect width="500" height="145" fill="url(#grid)"/><path d="M0 95 L24 95 L39 94 L52 77 L66 102 L77 54 L90 93 L113 93 L129 93 L142 72 L155 113 L167 35 L180 99 L194 94 L220 94 L236 70 L248 110 L260 41 L275 95 L297 95 L313 94 L326 75 L342 105 L354 48 L367 96 L389 95 L406 90 L419 66 L435 115 L445 47 L461 95 L500 95 L500 145 L0 145 Z" fill="url(#wavefill)"/><path d="M0 95 L24 95 L39 94 L52 77 L66 102 L77 54 L90 93 L113 93 L129 93 L142 72 L155 113 L167 35 L180 99 L194 94 L220 94 L236 70 L248 110 L260 41 L275 95 L297 95 L313 94 L326 75 L342 105 L354 48 L367 96 L389 95 L406 90 L419 66 L435 115 L445 47 L461 95 L500 95" fill="none" stroke="#3ef1cd" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div class="screen-foot"><span>REF: TP / 001</span><span>REGISTRO DE DATOS</span></div>
+            </div>
+            <div class="instrument-metrics"><div><small>MEDICIÓN</small><strong>0.002 <em>mm</em></strong></div><div><small>CONTROL</small><strong class="metric-green">ESTABLE</strong></div><div><small>ESTADO</small><strong>ACTIVO</strong></div></div>
+          </div>
+          <div class="float-chip chip-one"><span class="chip-symbol">↗</span><span><b>Ingeniería aplicada</b><small>Soluciones a medida</small></span></div>
+          <div class="float-chip chip-two"><span class="chip-symbol chip-blue">◎</span><span><b>Trazabilidad</b><small>Registro y seguimiento</small></span></div>
+          <span class="art-caption">TATRONICS / PRECISIÓN EN CADA PROCESO</span>
+        </div>
+      </div>
+      <div class="hero-bottom-border" aria-hidden="true"></div>
+    </section>
+
+    <section class="specialties" aria-label="Áreas de especialización">
+      <div class="container specialty-inner"><span class="specialties-caption">ENFOQUE MULTIDISCIPLINARIO</span><div class="specialty-items"><span>METROLOGÍA</span><span>INGENIERÍA</span><span>AUTOMATIZACIÓN</span><span>MANTENIMIENTO</span></div></div>
+    </section>
+
+    <section class="section services-section" id="servicios" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head"><div><p class="section-kicker"><span class="kicker-line"></span> QUÉ HACEMOS</p><h2 id="services-title">Soluciones que mantienen <em>todo en marcha.</em></h2></div><p>Desde el diagnóstico inicial hasta la puesta en funcionamiento, ponemos la ingeniería al servicio de sus operaciones.</p></div>
+        <div class="services-grid">
+          <article class="service-card service-featured"><div class="service-top"><span class="service-number">01 / SERVICIO</span><span class="service-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.8"/><path d="M16 8v8l6 4M6 24l5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></div><div class="service-body"><span class="service-category">PRECISIÓN Y CONTROL</span><h3>Calibración y metrología</h3><p>Evaluación metrológica, verificación de instrumentos y documentación técnica para apoyar el control de sus mediciones.</p><div class="service-tags"><span>Instrumentación</span><span>Trazabilidad</span><span>Verificación</span></div></div><a class="service-link" href="#cotizacion" data-service="Calibración y metrología">Consultar servicio <span aria-hidden="true">↗</span></a></article>
+          <article class="service-card"><div class="service-top"><span class="service-number">02 / SERVICIO</span><span class="service-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m19 5-9 12h8l-5 10 11-14h-8l3-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span></div><div class="service-body"><span class="service-category">CONTINUIDAD OPERATIVA</span><h3>Mantenimiento técnico</h3><p>Diagnóstico de fallas, reparación y mantenimiento preventivo o correctivo de equipos industriales y de laboratorio.</p><div class="service-tags"><span>Diagnóstico</span><span>Reparación</span></div></div><a class="service-link" href="#cotizacion" data-service="Mantenimiento técnico">Consultar servicio <span aria-hidden="true">↗</span></a></article>
+          <article class="service-card"><div class="service-top"><span class="service-number">03 / SERVICIO</span><span class="service-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="6" y="6" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v4M20 2v4M12 26v4M20 26v4M2 12h4M2 20h4M26 12h4M26 20h4M12 17l3 3 6-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="service-body"><span class="service-category">EFICIENCIA Y CONTROL</span><h3>Automatización</h3><p>Integración y mejora de sistemas de control para optimizar procesos, monitoreo y funcionamiento de equipos.</p><div class="service-tags"><span>Control</span><span>Integración</span></div></div><a class="service-link" href="#cotizacion" data-service="Automatización">Consultar servicio <span aria-hidden="true">↗</span></a></article>
+          <article class="service-card"><div class="service-top"><span class="service-number">04 / SERVICIO</span><span class="service-icon"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m16 3 11 6.4v13.2L16 29 5 22.6V9.4L16 3Z" stroke="currentColor" stroke-width="1.8"/><path d="m5 9.4 11 6.5 11-6.5M16 15.9V29" stroke="currentColor" stroke-width="1.8"/></svg></span></div><div class="service-body"><span class="service-category">DISEÑO Y DESARROLLO</span><h3>Ingeniería a medida</h3><p>Diseño, fabricación y adecuación de soluciones electrónicas, eléctricas y mecánicas para desafíos específicos.</p><div class="service-tags"><span>Prototipos</span><span>Desarrollo</span></div></div><a class="service-link" href="#cotizacion" data-service="Ingeniería a medida">Consultar servicio <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="nosotros" aria-labelledby="about-title"><div class="container about-grid"><div class="about-visual"><div class="about-label">ENFOQUE TÉCNICO <span>✦</span> SOLUCIONES REALES</div><div class="about-visual-title">Cada detalle<br><span>importa.</span></div><div class="about-corner">T / P <span>—</span> 2026</div><div class="about-circles"><span></span><span></span><span></span></div></div><div class="about-content"><p class="section-kicker"><span class="kicker-line"></span> SOBRE TATRONICS</p><h2 id="about-title">Más que equipos. <em>Confianza en sus procesos.</em></h2><p>En Tatronics Perú trabajamos en soluciones electrónicas, eléctricas y mecánicas para laboratorios y entornos industriales. Entendemos que detrás de cada instrumento hay decisiones importantes, seguridad y continuidad operativa.</p><div class="value-list"><div class="value-item"><span class="value-icon">01</span><div><h3>Soluciones pensadas para su necesidad</h3><p>Analizamos el problema para proponer una intervención técnica adecuada.</p></div></div><div class="value-item"><span class="value-icon">02</span><div><h3>Comunicación clara</h3><p>Le ayudamos a entender el alcance del trabajo y los siguientes pasos.</p></div></div><div class="value-item"><span class="value-icon">03</span><div><h3>Seguimiento del servicio</h3><p>Priorizamos el registro de información y la trazabilidad cuando aplica.</p></div></div></div><a class="text-cta" href="#contacto">Hablemos de su proyecto <span aria-hidden="true">↗</span></a></div></div></section>
+
+    <section class="section process-section" id="proceso" aria-labelledby="process-title"><div class="container"><div class="section-head"><div><p class="section-kicker"><span class="kicker-line"></span> ASÍ TRABAJAMOS</p><h2 id="process-title">De la consulta a <em>la solución.</em></h2></div><p>Un proceso claro para conocer su necesidad, definir el alcance técnico y coordinar la atención.</p></div><div class="steps-grid"><article class="step-card"><span class="step-index">01</span><h3>Cuéntenos su necesidad</h3><p>Indíquenos qué equipo o proceso requiere atención y qué problema presenta.</p></article><article class="step-card"><span class="step-index">02</span><h3>Evaluamos el alcance</h3><p>Revisamos la información y planteamos las alternativas de atención técnica.</p></article><article class="step-card"><span class="step-index">03</span><h3>Coordinamos el servicio</h3><p>Definimos las condiciones y próximos pasos para llevar adelante el trabajo.</p></article></div></div></section>
+
+    <section class="industry-section" aria-labelledby="industry-title"><div class="container industry-inner"><div><p class="section-kicker"><span class="kicker-line"></span> SECTORES QUE ATENDEMOS</p><h2 id="industry-title">Tecnología para distintos <em>entornos de trabajo.</em></h2></div><div class="industry-list"><span>Laboratorios</span><span>Industria</span><span>Investigación</span><span>Educación</span></div></div></section>
+
+    <section class="section contact-section" id="contacto" aria-labelledby="contact-title"><div class="container contact-layout"><div class="contact-copy"><p class="section-kicker"><span class="kicker-line"></span> EMPECEMOS</p><h2 id="contact-title">¿Su equipo necesita <em>atención técnica?</em></h2><p>Cuéntenos lo que necesita. Prepararemos su consulta para que pueda enviarla directamente a nuestro WhatsApp, sin crear una cuenta.</p><div class="contact-detail"><span class="detail-icon">↗</span><div><small>ATENCIÓN POR WHATSAPP</small><a href="https://wa.me/51963727835" target="_blank" rel="noopener noreferrer">+51 963 727 835</a></div></div><div class="contact-detail"><span class="detail-icon">✉</span><div><small>CORREO ELECTRÓNICO</small><a href="mailto:administracion@tatronicsperu.com">administracion@tatronicsperu.com</a></div></div><div class="contact-note">La consulta no representa una solicitud de servicio confirmada. Nuestro equipo coordinará los detalles con usted.</div></div><div class="quote-card" id="cotizacion"><div class="quote-heading"><div><p class="quote-overline">FORMULARIO RÁPIDO</p><h3>Solicite una cotización</h3><span>Envíe su consulta en 3 pasos simples.</span></div><span class="quote-arrow" aria-hidden="true">↗</span></div><form id="quote-form"><div class="field-row"><div class="field"><label for="quote-name">Nombre completo <span>*</span></label><input id="quote-name" name="nombre" type="text" autocomplete="name" placeholder="¿Cómo se llama?" maxlength="100" required></div><div class="field"><label for="quote-company">Empresa (opcional)</label><input id="quote-company" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de su empresa" maxlength="100"></div></div><div class="field"><label for="quote-service">Servicio de interés <span>*</span></label><select id="quote-service" name="servicio" required><option value="">Seleccione un servicio</option><option>Calibración y metrología</option><option>Mantenimiento técnico</option><option>Automatización</option><option>Ingeniería a medida</option><option>Otro / Necesito orientación</option></select></div><div class="field"><label for="quote-message">Cuéntenos qué necesita <span>*</span></label><textarea id="quote-message" name="mensaje" rows="4" maxlength="1200" placeholder="Describa su equipo, necesidad o problema..." required></textarea></div><button class="button button-primary submit-button" type="submit">Enviar consulta por WhatsApp <span aria-hidden="true">↗</span></button><p class="form-help">Al enviar, se abrirá WhatsApp con su mensaje listo para revisar y enviar. No almacenamos estos datos en la página.</p></form></div></div></section>
+
+    <section class="faq-section" aria-labelledby="faq-title"><div class="container faq-layout"><div><p class="section-kicker"><span class="kicker-line"></span> DUDAS FRECUENTES</p><h2 id="faq-title">Respuestas antes de empezar.</h2></div><div class="faq-list"><details><summary>¿Cómo solicito una evaluación o cotización?<span aria-hidden="true">+</span></summary><p>Complete el formulario o escríbanos por WhatsApp con el tipo de equipo, problema y ubicación. Con esos datos podremos orientar la atención inicial.</p></details><details><summary>¿Atienden equipos de laboratorio e industriales?<span aria-hidden="true">+</span></summary><p>Trabajamos con equipos y procesos de laboratorio e industria. La disponibilidad para cada equipo se confirma tras revisar la información técnica.</p></details><details><summary>¿El servicio incluye certificados o informes?<span aria-hidden="true">+</span></summary><p>La documentación depende del servicio contratado. Consúltenos el tipo de informe o certificado que necesita antes de confirmar el trabajo.</p></details></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container"><div class="footer-top"><a class="brand" href="#inicio" aria-label="Tatronics Perú, volver al inicio"><span class="brand-mark" aria-hidden="true">T</span><span class="brand-copy"><strong>TATRONICS<span>.</span></strong><small>INGENIERÍA &amp; METROLOGÍA</small></span></a><p>Ingeniería y precisión para hacer que sus procesos avancen.</p><a class="footer-up" href="#inicio" aria-label="Volver arriba">↑</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Tatronics Perú. Todos los derechos reservados.</span><div><a href="#servicios">Servicios</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a><a href="{{ url_for('auth.login') }}">Acceso al sistema</a></div></div></div></footer>
+  <a class="floating-whatsapp" href="https://wa.me/51963727835?text=Hola%2C%20quiero%20consultar%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.5 1.74 6.46L3 29l6.7-1.7A13 13 0 1016 3Zm0 23.5a10.4 10.4 0 01-5.34-1.47l-.38-.23-3.98 1.01 1.03-3.87-.25-.4A10.5 10.5 0 1126.5 16c0 5.79-4.71 10.5-10.5 10.5Zm5.77-7.85c-.31-.15-1.81-.89-2.09-.99-.28-.1-.49-.15-.69.15s-.8.99-.98 1.19-.36.23-.67.08c-.31-.15-1.3-.48-2.48-1.53-.92-.81-1.54-1.81-1.72-2.12-.18-.31-.02-.48.13-.63.14-.14.31-.36.46-.54.15-.18.2-.31.31-.52.1-.2.05-.39-.03-.54-.08-.15-.69-1.67-.95-2.29-.25-.6-.51-.51-.69-.52h-.59c-.21 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.57s1.11 2.99 1.26 3.2c.15.2 2.19 3.34 5.31 4.68.74.32 1.31.5 1.76.64.75.24 1.43.2 1.96.12.6-.09 1.81-.74 2.07-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.36Z"/></svg><span>¿Necesita ayuda?</span></a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!-- SIDEBAR -->
+<div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+<aside class="sidebar" id="sidebar" aria-label="Menú del sistema">
+  <div class="sidebar-header">
+    <div class="sidebar-logo" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 26.5V13.5L20 6.5L32 13.5V26.5L20 33.5L8 26.5Z" stroke="currentColor" stroke-width="2.6"/><path d="M13 16.5H27M20 16.5V28M15 22H25" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></div>
+    <div><div class="sidebar-brand">TATRONICS<span>.</span></div><div class="sidebar-sub">GESTIÓN METROLÓGICA</div></div>
+  </div>
+  <div class="workspace-label"><span class="workspace-label-dot"></span> {{ 'CENTRO ADMINISTRATIVO' if user.user_rol in ('admin', 'jefe') else 'ÁREA TÉCNICA' }}</div>
+  <div class="sidebar-user">
+    <div class="user-avatar">{{ user.user_nombre[0] if user.user_nombre else '?' }}</div>
+    <div class="user-info">
+      <div class="user-name">{{ user.user_nombre }}</div>
+      <div class="user-role">{{ {'admin':'Administrador', 'jefe':'Jefatura', 'tecnico':'Personal técnico'}.get(user.user_rol, 'Usuario') }}</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav" aria-label="Módulos del sistema">
+    {% if user.user_rol in ('admin', 'jefe') %}
+    <div class="nav-section-title">Administración y control</div>
+    <button type="button" class="nav-item" data-panel="dashboard"><span class="ni">📊</span> Dashboard ejecutivo</button>
+    {% if user.user_rol == 'admin' %}<button type="button" class="nav-item" data-panel="personal"><span class="ni">👥</span> Personal y accesos</button>{% endif %}
+    <button type="button" class="nav-item" data-panel="certificados"><span class="ni">🛡️</span> Aprobar certificados</button>
+    <button type="button" class="nav-item" data-panel="clientes"><span class="ni">🏢</span> Clientes</button>
+    <button type="button" class="nav-item" data-panel="equipos"><span class="ni">🔧</span> Equipos</button>
+    <button type="button" class="nav-item" data-panel="patrones"><span class="ni">📏</span> Patrones</button>
+    <div class="nav-section-title">Supervisión técnica</div>
+    <button type="button" class="nav-item" data-panel="historial"><span class="ni">📋</span> Historial y revisiones</button>
+    <button type="button" class="nav-item" data-panel="nuevo-diagnostico"><span class="ni">🔬</span> Nuevo diagnóstico</button>
+    <button type="button" class="nav-item" data-panel="estadisticas"><span class="ni">📈</span> Estadísticas</button>
+    <button type="button" class="nav-item" data-panel="auditoria"><span class="ni">🛡️</span> Auditoría</button>
+    {% else %}
+    <div class="nav-section-title">Mi espacio técnico</div>
+    <button type="button" class="nav-item" data-panel="mi-inicio"><span class="ni">🏠</span> Mi inicio</button>
+    <button type="button" class="nav-item" data-panel="nuevo-diagnostico"><span class="ni">🔬</span> Nuevo diagnóstico <span class="nav-badge" id="nb-new">+</span></button>
+    <button type="button" class="nav-item" data-panel="historial"><span class="ni">📋</span> Mi historial</button>
+    <button type="button" class="nav-item" data-panel="certificados"><span class="ni">📄</span> Mis certificados</button>
+    <button type="button" class="nav-item" data-panel="equipos"><span class="ni">🔧</span> Consultar equipos</button>
+    {% endif %}
+    <div class="nav-section-title">Comunicaciones</div>
+    <button type="button" class="nav-item" data-panel="alertas"><span class="ni">🔔</span> Notificaciones <span class="nav-badge warn" id="nb-alerts">?</span></button>
+    <div class="nav-section-title">Cuenta</div>
+    <form class="logout-form" method="POST" action="{{ url_for('auth.logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="nav-item logout-item" type="submit"><span class="ni">↪</span> Cerrar sesión</button></form>
+  </nav>
+  <div class="sidebar-footer"><div class="status-dot"></div><div class="status-txt">Espacio de trabajo · CalibPro</div></div>
+</aside>
+

@@ -1,0 +1,13 @@
+services:
+  tatronics:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./instance:/app/instance
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - CALIBPRO_ENV=production
+    # Usar nginx/caddy con TLS HTTPS delante de esta instancia.

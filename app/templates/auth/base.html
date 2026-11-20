@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b33">
+  <meta name="description" content="Plataforma CalibPro de Tatronics Perú. Gestión técnica de equipos, diagnósticos y certificados.">
+  <title>{% block title %}Acceso{% endblock %} | Tatronics Perú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth/portal.css') }}">
+  <script src="{{ url_for('static', filename='js/auth/portal.js') }}" defer></script>
+</head>
+<body>
+<a href="#portal-content" class="skip">Ir al formulario</a>
+<header class="portal-header">
+  <nav class="portal-nav container" aria-label="Navegación de acceso">
+    <a href="{{ url_for('home.inicio') }}" class="brand" aria-label="Tatronics Perú, página principal">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 26.5V13.5L20 6.5L32 13.5V26.5L20 33.5L8 26.5Z" stroke="currentColor" stroke-width="2.6"/><path d="M13 16.5H27M20 16.5V28M15 22H25" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+      <span class="brand-copy"><strong>TATRONICS<span>.</span></strong><small>INGENIERÍA &amp; METROLOGÍA</small></span>
+    </a>
+    <div class="portal-navlinks"><a href="{{ url_for('home.inicio') }}">Página principal</a><a href="{{ url_for('home.inicio') }}#servicios">Servicios</a><a href="{{ url_for('home.inicio') }}#contacto">Contacto</a></div>
+    {% block navlink %}{% endblock %}
+  </nav>
+</header>
+<main class="portal-background" id="portal-content">
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="portal-layout container">
+    <section class="portal-story" aria-label="Presentación del sistema">
+      <p class="story-eyebrow"><span class="pulse"></span> PLATAFORMA DE GESTIÓN TÉCNICA</p>
+      <h1>Ingeniería que inspira <em>confianza.</em><br>Datos que impulsan decisiones.</h1>
+      <p class="story-description">Accede a un espacio de trabajo organizado para gestionar equipos, diagnósticos, patrones y documentación técnica con un mismo enfoque de precisión.</p>
+      <div class="story-product">
+        <div class="product-head"><span><span class="product-indicator"></span> TATRONICS / CALIBPRO</span><span class="product-version">SISTEMA DE GESTIÓN</span></div>
+        <div class="product-screen">
+          <div class="product-screen-head"><span>Seguimiento de procesos</span><span class="screen-tag">MONITOREO</span></div>
+          <svg viewBox="0 0 520 148" preserveAspectRatio="none" class="signal" role="img" aria-label="Visualización ilustrativa de una señal de medición">
+            <defs><pattern id="portal-grid" width="37" height="28" patternUnits="userSpaceOnUse"><path d="M37 0H0V28" stroke="#316071" stroke-width="1" fill="none" opacity=".36"/></pattern><linearGradient id="portal-wave" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#20d8b7" stop-opacity=".25"/><stop offset="1" stop-color="#20d8b7" stop-opacity="0"/></linearGradient></defs><rect width="520" height="148" fill="url(#portal-grid)"/>
+            <path d="M0 102 L28 102 L42 85 L54 107 L68 40 L83 101 L102 101 L128 101 L143 74 L155 109 L169 44 L183 102 L206 102 L227 82 L239 105 L254 49 L272 101 L301 101 L317 75 L332 109 L350 42 L365 101 L388 102 L404 86 L421 105 L438 39 L451 100 L520 100 L520 148 L0 148Z" fill="url(#portal-wave)"/>
+            <path d="M0 102 L28 102 L42 85 L54 107 L68 40 L83 101 L102 101 L128 101 L143 74 L155 109 L169 44 L183 102 L206 102 L227 82 L239 105 L254 49 L272 101 L301 101 L317 75 L332 109 L350 42 L365 101 L388 102 L404 86 L421 105 L438 39 L451 100 L520 100" fill="none" stroke="#2de7c8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="product-footer"><span>REGISTRO &amp; SEGUIMIENTO</span><span>CONTROL DE PROCESOS</span></div>
+        </div>
+        <div class="product-tags"><span>◈ Gestión de equipos</span><span>◎ Trazabilidad documental</span><span>↗ Reportes técnicos</span></div>
+      </div>
+      <p class="story-footnote">TATRONICS PERÚ <span>—</span> TECNOLOGÍA AL SERVICIO DE TU OPERACIÓN</p>
+    </section>
+    <section class="portal-form-area" aria-label="{% block form_label %}Formulario{% endblock %}">
+      <div class="auth-card">
+        <div class="card-accent"></div>
+        {% block card %}{% endblock %}
+      </div>
+      <p class="portal-security"><span aria-hidden="true">◈</span> Acceso a la plataforma de gestión Tatronics Perú</p>
+    </section>
+  </div>
+</main>
+<footer class="portal-footer"><div class="container"><span>© Tatronics Perú · Ingeniería y metrología</span><a href="{{ url_for('home.inicio') }}">Volver a la web corporativa ↗</a></div></footer>
+</body>
+</html>

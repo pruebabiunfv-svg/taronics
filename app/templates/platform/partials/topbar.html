@@ -1,0 +1,17 @@
+<div class="topbar">
+  <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Abrir menú del sistema" aria-expanded="false" aria-controls="sidebar"><span aria-hidden="true">☰</span></button>
+  <div class="topbar-heading">
+    <div class="topbar-title" id="topbar-title">{{ 'Panel administrativo' if user.user_rol in ('admin','jefe') else 'Mi espacio técnico' }}</div>
+    <div class="topbar-bc">TATRONICS / <span id="topbar-bc-sub">Inicio</span></div>
+  </div>
+  <div class="topbar-actions">
+    <div class="search-wrap">
+      <input type="text" id="global-search" aria-label="Buscar equipos y certificados" placeholder="🔍 Buscar equipo, certificado..." autocomplete="off">
+      <div id="search-results" class="search-drop"></div>
+    </div>
+    <button class="icon-btn" onclick="showPanel('alertas')" title="Alertas" aria-label="Ver alertas"><span>🔔</span><div class="notif-dot" id="alert-dot"></div></button>
+    <span class="topbar-role">{{ 'Administración' if user.user_rol == 'admin' else 'Supervisión' if user.user_rol == 'jefe' else 'Área técnica' }}</span>
+    <button class="btn-primary-sm" onclick="showPanel('nuevo-diagnostico')">➕ Nuevo Diagnóstico</button>
+  </div>
+</div>
+

@@ -1,0 +1,192 @@
+<!-- ═══ NUEVO DIAGNÓSTICO (wizard) ═══ -->
+<div id="panel-nuevo-diagnostico" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <div><div class="card-title">🔬 Nuevo Diagnóstico de Calibración</div><div class="card-sub">Asistente paso a paso</div></div>
+      <span class="badge badge-blue" id="wiz-badge">Paso 1 de 6</span>
+    </div>
+    <!-- Wizard steps indicator -->
+    <div class="wizard-steps">
+      <div class="wz-step active" id="ws-1"><div class="wz-circle">1</div><div class="wz-lbl">Equipo</div></div>
+      <div class="wz-step" id="ws-2"><div class="wz-circle">2</div><div class="wz-lbl">Magnitud</div></div>
+      <div class="wz-step" id="ws-3"><div class="wz-circle">3</div><div class="wz-lbl">Condiciones</div></div>
+      <div class="wz-step" id="ws-4"><div class="wz-circle">4</div><div class="wz-lbl">Lecturas</div></div>
+      <div class="wz-step" id="ws-5"><div class="wz-circle">5</div><div class="wz-lbl">Fotos</div></div>
+      <div class="wz-step" id="ws-6"><div class="wz-circle">6</div><div class="wz-lbl">Reporte</div></div>
+    </div>
+
+    <!-- STEP 1 — Equipo -->
+    <div class="step-pane active" id="sp-1">
+      <div class="alert alert-info">ℹ️ Selecciona un equipo y patrón registrados. Los códigos DEMO corresponden a ejemplos ficticios de desarrollo; no representan calibraciones reales.</div>
+      <div class="form-row">
+        <div class="fg"><label>Equipo *</label>
+          <select id="f-equipo-id" required>
+            <option value="">— Seleccionar equipo —</option>
+          </select>
+        </div>
+        <div class="fg"><label>Técnico responsable</label>
+          <select id="f-tecnico-id"><option value="">— Seleccionar —</option></select>
+        </div>
+      </div>
+      <div id="equipo-info" class="equipo-info-box" style="display:none"></div>
+      <div class="form-row">
+        <div class="fg"><label>Procedimiento de calibración</label>
+          <input type="text" id="f-procedimiento" placeholder="Ej: TP-PRE-001">
+        </div>
+        <div class="fg"><label>Patrón de referencia *</label>
+          <select id="f-patron-id"><option value="">— Seleccionar patrón —</option></select>
+        </div>
+      </div>
+      <div class="fg"><label>Observaciones previas</label>
+        <textarea id="f-obs-prev" rows="2" placeholder="Estado visual, historial de fallas..."></textarea>
+      </div>
+      <div class="wiz-nav"><div></div><button class="btn-primary" onclick="wizNext(2)">Siguiente: Magnitud →</button></div>
+    </div>
+
+    <!-- STEP 2 — Magnitud -->
+    <div class="step-pane" id="sp-2">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:18px;">Selecciona la magnitud física principal a calibrar.</p>
+      <div class="meas-grid">
+        <div class="meas-card selected" data-mag="Presión"><div class="mi">🔵</div><div class="mn">Presión</div><div class="mu">bar · kPa · PSI</div></div>
+        <div class="meas-card" data-mag="Peso"><div class="mi">⚖️</div><div class="mn">Peso / Masa</div><div class="mu">g · kg · mg</div></div>
+        <div class="meas-card" data-mag="Temperatura"><div class="mi">🌡️</div><div class="mn">Temperatura</div><div class="mu">°C · °F · K</div></div>
+        <div class="meas-card" data-mag="Eléctrica"><div class="mi">⚡</div><div class="mn">Eléctrica</div><div class="mu">V · A · Ω · Hz</div></div>
+        <div class="meas-card" data-mag="Dimensional"><div class="mi">📏</div><div class="mn">Dimensional</div><div class="mu">mm · µm · in</div></div>
+        <div class="meas-card" data-mag="pH"><div class="mi">🧪</div><div class="mn">pH / Química</div><div class="mu">pH · mV · µS</div></div>
+        <div class="meas-card" data-mag="Caudal"><div class="mi">💧</div><div class="mn">Caudal / Flujo</div><div class="mu">L/min · m³/h</div></div>
+        <div class="meas-card" data-mag="Vibración"><div class="mi">🔊</div><div class="mn">Vibración</div><div class="mu">dB · mm/s</div></div>
+        <div class="meas-card" data-mag="Radiación"><div class="mi">☀️</div><div class="mn">Radiación/Óptica</div><div class="mu">lux · nm · W/m²</div></div>
+      </div>
+      <div class="form-row" style="margin-top:16px;">
+        <div class="fg"><label>Unidad de trabajo</label>
+          <input type="text" id="f-unidad" value="bar" placeholder="Ej: bar, °C, g">
+        </div>
+      </div>
+      <div class="wiz-nav">
+        <button class="btn-sec" onclick="wizNext(1)">← Volver</button>
+        <button class="btn-primary" onclick="wizNext(3)">Siguiente: Condiciones →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Condiciones ambientales -->
+    <div class="step-pane" id="sp-3">
+      <div class="alert alert-warn">⚠️ Las condiciones ambientales deben registrarse al inicio y fin del diagnóstico.</div>
+      <div class="two-col" style="margin-top:14px;">
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:14px;">🌡️ Al Inicio</div>
+          <div class="form-row">
+            <div class="fg"><label>Temperatura (°C)</label><input type="number" id="f-temp-ini" step="0.1" value="22.0"></div>
+            <div class="fg"><label>Humedad (%HR)</label><input type="number" id="f-hum-ini" step="1" value="55"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>Presión atm. (hPa)</label><input type="number" id="f-presion-atm" step="0.1" value="1013.2"></div>
+            <div class="fg"><label>Hora inicio</label><input type="time" id="f-hora-ini"></div>
+          </div>
+        </div>
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:14px;">🌡️ Al Final</div>
+          <div class="form-row">
+            <div class="fg"><label>Temperatura (°C)</label><input type="number" id="f-temp-fin" step="0.1" value="23.0"></div>
+            <div class="fg"><label>Humedad (%HR)</label><input type="number" id="f-hum-fin" step="1" value="58"></div>
+          </div>
+        </div>
+      </div>
+      <div class="wiz-nav">
+        <button class="btn-sec" onclick="wizNext(2)">← Volver</button>
+        <button class="btn-primary" onclick="createDiagnostico()">Siguiente: Lecturas →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 — Lecturas -->
+    <div class="step-pane" id="sp-4">
+      <div class="alert alert-info">🔵 Registra las lecturas. La desviación y error se calculan automáticamente.</div>
+      <div id="lecturas-wrap" style="overflow-x:auto;margin-top:14px;">
+        <table class="lecturas-tbl" id="tbl-lecturas">
+          <thead><tr><th>#</th><th>Nominal</th><th>% Rango</th><th>EBP</th><th>Patrón</th><th>Desviación</th><th>Error %FS</th><th>U(k=2)</th><th></th></tr></thead>
+          <tbody id="lecturas-body"></tbody>
+        </table>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:12px;">
+        <button class="btn-sec btn-sm" onclick="addLecturaRow()">➕ Agregar fila</button>
+        <button class="btn-sec btn-sm" id="btn-save-lecturas" onclick="saveLecturas()">💾 Guardar lecturas</button>
+      </div>
+      <div id="lecturas-summary" style="display:none;margin-top:16px;"></div>
+      <div class="wiz-nav">
+        <button class="btn-sec" onclick="wizNext(3)">← Volver</button>
+        <button class="btn-primary" onclick="saveLecturasAndNext()">Siguiente: Fotos →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 — Fotos -->
+    <div class="step-pane" id="sp-5">
+      <div class="alert alert-info">📷 Las fotos se almacenan en el servidor y se incluyen en el certificado PDF.</div>
+      <div class="two-col" style="margin-top:14px;">
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:12px;">📌 Fotos Requeridas</div>
+          <div class="photo-grid" id="photos-required"></div>
+        </div>
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:12px;">📎 Fotos Adicionales</div>
+          <div class="photo-grid" id="photos-extra"></div>
+          <button class="btn-sec btn-sm" style="margin-top:12px;width:100%;" onclick="document.getElementById('ph-extra').click()">📸 Agregar foto</button>
+          <input type="file" id="ph-extra" accept="image/*" multiple style="display:none" onchange="handleExtraPhotos(this)">
+        </div>
+      </div>
+      <div id="photo-counter" class="alert alert-success" style="display:none;margin-top:12px;"></div>
+      <div class="fg" style="margin-top:14px;">
+        <label>Observaciones del diagnóstico visual</label>
+        <textarea id="f-obs-visual" rows="3" placeholder="Estado visual, hallazgos relevantes..."></textarea>
+      </div>
+      <div class="wiz-nav">
+        <button class="btn-sec" onclick="wizNext(4)">← Volver</button>
+        <button class="btn-primary" onclick="wizNext(6);loadStep6()">Siguiente: Reporte →</button>
+      </div>
+    </div>
+
+    <!-- STEP 6 — Reporte final -->
+    <div class="step-pane" id="sp-6">
+      <div class="alert alert-success">✅ Diagnóstico listo. Completa la conclusión y genera el certificado.</div>
+      <div class="two-col" style="margin-top:14px;">
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:14px;">📋 Conclusión</div>
+          <div class="fg"><label>Resultado *</label>
+            <select id="f-resultado">
+              <option value="conforme">✅ CONFORME — Cumple especificaciones</option>
+              <option value="observacion">⚠️ CONFORME CON OBSERVACIONES</option>
+              <option value="no_conforme">❌ NO CONFORME</option>
+            </select>
+          </div>
+          <div class="fg"><label>Dictamen técnico</label>
+            <input type="text" id="f-dictamen" value="Apto para uso sin restricciones">
+          </div>
+          <div class="fg"><label>Próxima calibración</label>
+            <input type="date" id="f-prox-calib">
+          </div>
+          <div class="fg"><label>Observaciones finales</label>
+            <textarea id="f-obs-final" rows="3" placeholder="Recomendaciones, limitaciones..."></textarea>
+          </div>
+        </div>
+        <div class="card inner-card">
+          <div class="card-title" style="font-size:14px;margin-bottom:14px;">🖼️ Fotos capturadas</div>
+          <div id="step6-photos" class="photo-thumb-grid"></div>
+        </div>
+      </div>
+      <div class="card inner-card" style="margin-top:14px;">
+        <div class="card-title" style="font-size:14px;margin-bottom:14px;">📤 Revisión y emisión de certificados</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <button class="btn-primary" id="btn-finalizar" onclick="finalizarDiagnostico()">💾 Guardar diagnóstico</button>
+          <button class="btn-info" id="btn-revision" onclick="enviarARevision()" disabled>🛡️ Solicitar revisión</button>
+          <button class="btn-success" id="btn-ver-pdf" onclick="verPDF()" disabled>📄 Ver / Descargar PDF</button>
+          {% if user.user_rol in ('admin','jefe') %}<button class="btn-info" id="btn-email" onclick="openEmailModal()" disabled>📧 Enviar PDF aprobado por Gmail</button>{% endif %}
+        </div>
+        <p style="font-size:12px;color:var(--text2);margin-top:12px;">El jefe o administrador aprueba el expediente desde Certificados. La firma criptográfica PDF requiere un certificado PKCS#12 de la empresa.</p>
+        <div id="diag-cert-num" style="margin-top:12px;font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);display:none;"></div>
+      </div>
+      <div class="wiz-nav">
+        <button class="btn-sec" onclick="wizNext(5)">← Volver</button>
+        <button class="btn-sec" onclick="resetWizard()">🔄 Nuevo diagnóstico</button>
+      </div>
+    </div>
+  </div>
+</div>
+

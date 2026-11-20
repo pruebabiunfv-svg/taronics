@@ -1,0 +1,17 @@
+.git
+.venv
+instance
+.env
+migration
+__pycache__
+*.pyc
+.pytest_cache
+
+# Credenciales de firma y respaldos sensibles
+*.p12
+*.pfx
+*.pem
+*.key
+*.sqlite3
+*.db-wal
+*.db-shm

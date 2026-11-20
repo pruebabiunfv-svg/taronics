@@ -1,0 +1,121 @@
+<!-- ════════════════ MODALS ════════════════ -->
+
+<!-- EMAIL MODAL -->
+<div class="modal-overlay" id="email-modal">
+  <div class="modal" style="max-width:540px;">
+    <div class="modal-header"><div class="modal-title">📧 Enviar Certificado por Correo</div>
+      <button class="modal-close" onclick="closeModal('email-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label>Para *</label><input type="email" id="email-to" placeholder="destinatario@empresa.com"></div>
+      <div class="fg"><label>CC</label><input type="email" id="email-cc" placeholder="copia@empresa.com"></div>
+      <div class="fg"><label>Asunto</label><input type="text" id="email-subject"></div>
+      <div class="fg"><label>Mensaje</label><textarea id="email-body" rows="7"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sec" onclick="closeModal('email-modal')">Cancelar</button>
+      <button class="btn-primary" id="btn-send-email" onclick="sendEmail()">📤 Enviar ahora</button>
+    </div>
+  </div>
+</div>
+
+{% if user.user_rol == 'admin' %}
+<div class="modal-overlay" id="personal-modal">
+  <div class="modal" style="max-width:530px;">
+    <div class="modal-header"><div class="modal-title">👤 Nuevo usuario del sistema</div><button class="modal-close" type="button" onclick="closeModal('personal-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label for="personal-nombre">Nombre completo *</label><input id="personal-nombre" maxlength="120" placeholder="Nombres y apellidos"></div>
+      <div class="fg"><label for="personal-email">Correo electrónico *</label><input id="personal-email" type="email" maxlength="254" placeholder="usuario@empresa.com"></div>
+      <div class="fg"><label for="personal-rol">Perfil *</label><select id="personal-rol"><option value="tecnico">Técnico</option><option value="jefe">Jefatura (revisión y aprobación)</option><option value="admin">Administrador</option></select></div>
+      <div class="fg"><label for="personal-password">Contraseña inicial * (12 caracteres mínimo)</label><input id="personal-password" type="password" minlength="12" autocomplete="new-password"></div>
+    </div>
+    <div class="modal-footer"><button class="btn-sec" type="button" onclick="closeModal('personal-modal')">Cancelar</button><button class="btn-primary" type="button" onclick="savePersonal()">Crear cuenta</button></div>
+  </div>
+</div>
+{% endif %}
+
+<!-- EQUIPO MODAL -->
+<div class="modal-overlay" id="equipo-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="equipo-modal-title">➕ Registrar Equipo</div>
+      <button class="modal-close" onclick="closeModal('equipo-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-row"><div class="fg"><label>Código *</label><input type="text" id="eq-codigo" placeholder="MAN-0100"></div>
+        <div class="fg"><label>Magnitud *</label>
+          <select id="eq-magnitud"><option>Presión</option><option>Temperatura</option><option>Peso</option><option>Eléctrica</option><option>pH</option><option>Caudal</option><option>Dimensional</option></select></div></div>
+      <div class="fg"><label>Descripción *</label><input type="text" id="eq-descripcion" placeholder="Manómetro digital..."></div>
+      <div class="form-row"><div class="fg"><label>Fabricante</label><input type="text" id="eq-fabricante"></div>
+        <div class="fg"><label>Modelo</label><input type="text" id="eq-modelo"></div></div>
+      <div class="form-row"><div class="fg"><label>N° Serie</label><input type="text" id="eq-serie"></div>
+        <div class="fg"><label>Rango</label><input type="text" id="eq-rango" placeholder="0 — 10 bar"></div></div>
+      <div class="form-row"><div class="fg"><label>Resolución</label><input type="text" id="eq-resolucion"></div>
+        <div class="fg"><label>Tolerancia</label><input type="text" id="eq-tolerancia"></div></div>
+      <div class="form-row"><div class="fg"><label>Ubicación</label><input type="text" id="eq-ubicacion"></div>
+        <div class="fg"><label>Cliente</label><select id="eq-cliente"></select></div></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sec" onclick="closeModal('equipo-modal')">Cancelar</button>
+      <button class="btn-primary" onclick="saveEquipo()">💾 Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTE MODAL -->
+<div class="modal-overlay" id="cliente-modal">
+  <div class="modal" style="max-width:540px;">
+    <div class="modal-header"><div class="modal-title">➕ Nuevo Cliente</div>
+      <button class="modal-close" onclick="closeModal('cliente-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="fg"><label>Nombre / Razón social *</label><input type="text" id="cli-nombre"></div>
+      <div class="form-row"><div class="fg"><label>RUC</label><input type="text" id="cli-ruc"></div>
+        <div class="fg"><label>Teléfono</label><input type="text" id="cli-telefono"></div></div>
+      <div class="form-row"><div class="fg"><label>Contacto</label><input type="text" id="cli-contacto"></div>
+        <div class="fg"><label>Email</label><input type="email" id="cli-email"></div></div>
+      <div class="fg"><label>Dirección</label><input type="text" id="cli-direccion"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sec" onclick="closeModal('cliente-modal')">Cancelar</button>
+      <button class="btn-primary" onclick="saveCliente()">💾 Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- PATRON MODAL -->
+<div class="modal-overlay" id="patron-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">➕ Registrar Patrón</div>
+      <button class="modal-close" onclick="closeModal('patron-modal')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-row"><div class="fg"><label>Código *</label><input type="text" id="pat-codigo"></div>
+        <div class="fg"><label>Magnitud</label><select id="pat-magnitud"><option>Presión</option><option>Temperatura</option><option>Peso</option><option>Eléctrica</option><option>pH</option></select></div></div>
+      <div class="fg"><label>Descripción *</label><input type="text" id="pat-descripcion"></div>
+      <div class="form-row"><div class="fg"><label>Fabricante</label><input type="text" id="pat-fabricante"></div>
+        <div class="fg"><label>Modelo</label><input type="text" id="pat-modelo"></div></div>
+      <div class="form-row"><div class="fg"><label>Incertidumbre</label><input type="text" id="pat-incert" placeholder="U=0.005%FS (k=2)"></div>
+        <div class="fg"><label>N° Certificado</label><input type="text" id="pat-cert"></div></div>
+      <div class="form-row"><div class="fg"><label>Trazabilidad</label><input type="text" id="pat-trazab" placeholder="RNM — Perú"></div>
+        <div class="fg"><label>Vencimiento</label><input type="date" id="pat-vencimiento"></div></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sec" onclick="closeModal('patron-modal')">Cancelar</button>
+      <button class="btn-primary" onclick="savePatron()">💾 Guardar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- REVISION / APROBACION MODAL -->
+<div class="modal-overlay" id="approval-modal">
+  <div class="modal" style="max-width:540px;">
+    <div class="modal-header"><div class="modal-title">🛡️ Revisión y firma de aprobación</div>
+      <button class="modal-close" onclick="closeModal('approval-modal')">✕</button></div>
+    <div class="modal-body">
+      <div id="approval-context" class="alert alert-info" style="margin-bottom:15px;">Confirme la revisión técnica.</div>
+      <div class="fg"><label for="approval-action">Decisión</label><select id="approval-action"><option value="aprobar">Aprobar certificado</option><option value="rechazar">Rechazar y devolver para correcciones</option></select></div>
+      <div class="fg"><label for="approval-comment">Comentarios / motivo del rechazo</label><textarea id="approval-comment" rows="3" maxlength="1000" placeholder="Observaciones del responsable"></textarea></div>
+      <div class="fg"><label for="approval-password">Confirme su contraseña *</label><input id="approval-password" type="password" autocomplete="current-password" placeholder="Contraseña de su cuenta"></div>
+      <div class="alert alert-info">La aprobación se registra con su identidad, fecha, IP y huella SHA-256. La firma criptográfica PDF utiliza la credencial PKCS#12 configurada en el servidor.</div>
+    </div>
+    <div class="modal-footer"><button class="btn-sec" onclick="closeModal('approval-modal')">Cancelar</button>
+      <button class="btn-primary" id="btn-confirm-approval" onclick="confirmarAprobacion()">Confirmar decisión</button></div>
+  </div>
+</div>

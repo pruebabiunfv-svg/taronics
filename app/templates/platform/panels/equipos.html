@@ -1,0 +1,15 @@
+<!-- ═══ EQUIPOS ═══ -->
+<div id="panel-equipos" class="panel">
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">🔧 Inventario de Equipos</div>
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="eq-q" placeholder="Buscar..." style="width:180px;" oninput="loadEquipos()">
+        {% if user.user_rol in ('admin','jefe') %}<button class="btn-primary-sm" onclick="openEquipoModal()">➕ Registrar equipo</button>{% endif %}
+      </div>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th>Código</th><th>Descripción</th><th>Magnitud</th><th>Ubicación</th><th>Última calib.</th><th>Próxima calib.</th><th>Estado</th><th></th></tr></thead>
+      <tbody id="tbl-equipos"></tbody></table></div>
+  </div>
+</div>
+

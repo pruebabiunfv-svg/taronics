@@ -1,0 +1,14 @@
+<!-- Certificados y control de revisión -->
+<div id="panel-certificados" class="panel">
+  <div class="card">
+    <div class="card-header"><div class="card-title">📄 {{ 'Revisión y aprobación de certificados' if user.user_rol in ('admin','jefe') else 'Mis certificados' }}</div></div>
+    <div class="alert alert-info" style="margin-bottom:14px;">
+      <b>Flujo seguro:</b> Guardar diagnóstico → Solicitar revisión → Aprobar con contraseña →
+      Descargar PDF con QR o enviar por Gmail. Los PDF no están disponibles antes de la aprobación.
+    </div>
+    <div class="table-wrap"><table><thead><tr>
+      <th>Certificado</th><th>Equipo</th><th>Cliente</th><th>Resultado</th>
+      <th>Estado de aprobación</th><th>Correo</th><th>Documento</th><th>Acciones</th>
+    </tr></thead><tbody id="tbl-certs"></tbody></table></div>
+  </div>
+</div>

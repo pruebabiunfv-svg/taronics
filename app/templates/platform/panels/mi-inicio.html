@@ -1,0 +1,31 @@
+<!-- Espacio técnico: únicamente información del usuario conectado -->
+<div id="panel-mi-inicio" class="panel">
+  <section class="overview-hero tech-hero">
+    <div class="overview-content">
+      <div class="overview-kicker"><span></span> TATRONICS / ÁREA TÉCNICA</div>
+      <h1>Tu trabajo técnico, <em>con precisión.</em></h1>
+      <p>Hola, <strong>{{ user.user_nombre }}</strong>. Continúa tus diagnósticos, revisa certificados y consulta las notificaciones del sistema.</p>
+      <div class="overview-actions">
+        <button class="overview-primary" type="button" onclick="showPanel('nuevo-diagnostico')">+ Iniciar diagnóstico ↗</button>
+        <button class="overview-secondary" type="button" onclick="showPanel('historial')">Ver mi historial →</button>
+      </div>
+    </div>
+    <div class="overview-decoration" aria-hidden="true"><div class="overview-orbit"></div><div class="overview-circle">◎</div></div>
+  </section>
+  <div class="section-meta"><div><span class="meta-line"></span><span>MI ACTIVIDAD</span><h2>Resumen de mis trabajos</h2></div><span class="meta-info">Datos de tu usuario</span></div>
+  <div class="stats-grid tech-stats">
+    <div class="stat-card"><div class="stat-icon">🔬</div><div class="stat-val" id="tech-total">—</div><div class="stat-lbl">Mis diagnósticos</div></div>
+    <div class="stat-card orange"><div class="stat-icon">⏳</div><div class="stat-val" id="tech-revision">—</div><div class="stat-lbl">En revisión</div></div>
+    <div class="stat-card blue"><div class="stat-icon">✅</div><div class="stat-val" id="tech-approved">—</div><div class="stat-lbl">Certificados aprobados</div></div>
+    <div class="stat-card warn"><div class="stat-icon">↩</div><div class="stat-val" id="tech-returned">—</div><div class="stat-lbl">Devueltos</div></div>
+  </div>
+  <div class="two-col">
+    <section class="card"><div class="card-header"><div class="card-title">📋 Mis últimos diagnósticos</div><button class="btn-sec btn-sm" type="button" onclick="showPanel('historial')">Ver todos →</button></div><div id="tech-recientes" class="timeline" aria-live="polite"></div></section>
+    <section class="card"><div class="card-header"><div class="card-title">⚡ Accesos rápidos</div></div><div class="tech-quick-actions">
+       <button type="button" onclick="showPanel('nuevo-diagnostico')">🔬 <span>Nuevo diagnóstico</span> →</button>
+       <button type="button" onclick="showPanel('certificados')">📄 <span>Mis certificados</span> →</button>
+       <button type="button" onclick="showPanel('alertas')">🔔 <span>Notificaciones</span> →</button>
+       <button type="button" onclick="showPanel('equipos')">🔧 <span>Consultar equipos</span> →</button>
+    </div></section>
+  </div>
+</div>
